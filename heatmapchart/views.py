@@ -22,6 +22,8 @@ def myFirstChart(request):
     chartConfig["showValues"] = "1"
     chartConfig["showPlotBorder"] = "1"
     chartConfig["xAxisPosition"] = "top"
+    chartConfig["xAxisValueFontSize"] = "20"
+    chartConfig["yAxisValueFontSize"] = "20"    
 
     dataSource["chart"] = json.dumps(chartConfig)
     # print(dataSource["chart"])
@@ -29,7 +31,7 @@ def myFirstChart(request):
     df = pd.read_csv("crypto_corr.csv", index_col="Ticker")
     df_header = list(df.columns.values)
     # print(df_header)
-    dataSource = OrderedDict()
+    # dataSource = OrderedDict()
     # create row data
     row = []
     for item in df_header:
@@ -236,5 +238,5 @@ def myFirstChart(request):
     # Create an object for the heatmap 2D chart using the FusionCharts class constructor
     # The chart data is passed to the `dataSource` parameter.
     heatmap2D = FusionCharts("heatmap", "myFirstChart",
-                            "800", "400", "myChartHeatmap", "json", dataSource)
+                            "900", "400", "myChartHeatmap", "json", dataSource)
     return render(request, 'index.html', {'output': heatmap2D.render()})
