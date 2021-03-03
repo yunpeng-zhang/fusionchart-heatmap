@@ -1,2 +1,3 @@
 # django-fusionchart-heatmap
- heatmap of correlation matrix
+ Heatmap of correlation matrix
+![](heatmap_snapshot.png)
