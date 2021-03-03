@@ -37,12 +37,12 @@ def myFirstChart(request):
     for item in df_header:
         row.append({"id": item, "label": item})
     rows = {"row": row}
-    dataSource["rows"] = json.dumps(rows)
+    dataSource["rows"] = rows
     # print(dataSource["rows"])
     # create column data 
     column = row
     columns = {"column": column}
-    dataSource["columns"] = json.dumps(columns)
+    dataSource["columns"] = columns
     # print(dataSource["columns"])
     # create dataset
     table = []
@@ -51,8 +51,8 @@ def myFirstChart(request):
             table.append(
                 {"rowid": df_header[i], "columnid": df_header[j], "value": df.iloc[i, j]})
     tables = {"data": table} 
-    dataSource["dataset"] = [json.dumps(tables)]
-    print(dataSource["dataset"])
+    dataSource["dataset"] = [tables] # no need to use json.dumps as fusioncharts will prepare the data as json ready
+    # print(dataSource["dataset"])
 
     # dataSource["rows"] = {
     #     "row": [{
